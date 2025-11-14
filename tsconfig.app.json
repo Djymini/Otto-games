@@ -8,7 +8,7 @@
   },
   "include": [
     "src/**/*.ts"
-  ],
+, "src/tests/config/karma.base.conf.js"  ],
   "exclude": [
     "src/**/*.spec.ts"
   ]
