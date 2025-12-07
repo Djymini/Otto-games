@@ -2,12 +2,12 @@ import { Component, inject } from '@angular/core';
 import { FormGroup, Validators, ɵInternalFormsSharedModule, ReactiveFormsModule, NonNullableFormBuilder } from '@angular/forms';
 import { LoginFormModel } from '../../models/login-form.model';
 import { LoginDto } from '../../dto/login.dto';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login-form',
-  imports: [ɵInternalFormsSharedModule, ReactiveFormsModule],
+  imports: [ɵInternalFormsSharedModule, ReactiveFormsModule, RouterLink],
   templateUrl: './login-form.html',
   styleUrl: './login-form.scss',
 })

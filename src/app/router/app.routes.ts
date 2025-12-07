@@ -7,13 +7,13 @@ export const routes: Routes = [
     loadComponent: () => import('../features/home/pages/home.page'),
   },
   {
-    title: 'Authentification',
-    path: '/login',
+    title: 'Connexion',
+    path: 'login',
     loadComponent: () => import('../features/auth/pages/login.page'),
   },
   {
-    title: 'Authentification',
-    path: '/register',
+    title: 'Inscription',
+    path: 'register',
     loadComponent: () => import('../features/auth/pages/register.page'),
   },
 ];

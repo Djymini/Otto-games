@@ -1,0 +1,42 @@
+<div class="container">
+  <h1>Créer un compte</h1>
+  <form [formGroup]="registerForm" (submit)="onSubmit()">
+    <label for="email">Adresse email</label>
+    <input type="email" formControlName="email"/>
+    @if (registerForm.controls.email.invalid && registerForm.controls.email.touched) {
+      <p class="error">adresse mail invalide</p>
+    }
+
+    <label for="username">Nom de compte</label>
+    <input type="text" formControlName="username"/>
+    @if (registerForm.controls.username.invalid && registerForm.controls.username.touched) {
+      <p class="error">nom d'utilisateur invalide</p>
+    }
+
+    <label for="password">Mot de passe</label>
+    <input type="password" formControlName="password"/>
+    @if (registerForm.controls.password.invalid && registerForm.controls.password.touched) {
+      <p class="error">mot de passe invalide</p>
+    }
+
+    <label for="password_confirm">Confirmer le mot de passe</label>
+    <input type="password" formControlName="password_confirmation"/>
+    @if (registerForm.controls.password_confirmation.invalid && registerForm.controls.password_confirmation.touched) {
+      <p class="error">La confirmation du mot de passe doit correspondre à l'utilisateur</p>
+    }
+
+    <div class="privacy-policy" style="margin-top: 15px;">
+      <input type="checkbox" formControlName="privacyPolicy"/>
+      <label for="privacy-policy" style="display: inline;">En cochant cette case vous sertifiez avoir lu notre <a routerLink="/privacy-policy">politique de protection des données</a> et être en accord avec celle-ci</label>
+      @if (registerForm.controls.privacyPolicy.invalid && registerForm.controls.privacyPolicy.touched) {
+        <p class="error">Vous devez accepter les conditions d'utilisation</p>
+      }
+    </div>
+
+    <button class="btn" type="submit" [disabled]="registerForm.invalid">S’inscrire</button>
+  </form>
+
+  <div class="footer">
+    <p>Déjà un compte ? <a routerLink="/login">Se connecter</a></p>
+  </div>
+</div>
