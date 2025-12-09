@@ -4,6 +4,7 @@ import { LoginDto } from '../dto/login.dto';
 import { firstValueFrom } from 'rxjs';
 import { UserModel } from '../models/user.model';
 import { AuthResponseModel } from '../models/auth-response.model';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -19,16 +20,12 @@ export class AuthService {
 
   async login(credential: LoginDto): Promise<void> {
     let response: AuthResponseModel;
-    if (credential.email === 'admin@test.com') {
-      response = await firstValueFrom(this.http.get<AuthResponseModel>('data/user-admin.json'));
-    } else {
-      response = await firstValueFrom(this.http.get<AuthResponseModel>('data/user-lambda.json'));
-    }
+    response = await firstValueFrom(this.http.post<AuthResponseModel>(environment.apiUrl+"/auth/login", credential));
     this.handleSuccessfulLogin(response);
+    console.log('Hello ' + this.currentUser()?.username);
   }
 
   async logout(): Promise<void> {
-    //await firstValueFrom(this.http.post('/api/auth/logout', {}));
     this.handleLogout();
   }
 
