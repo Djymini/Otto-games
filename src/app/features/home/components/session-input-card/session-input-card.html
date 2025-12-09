@@ -1,0 +1,8 @@
+<form [formGroup]="sessionInputForm" (submit)="onSubmit()">
+  <input type="text" placeholder="Code de session" formControlName="code">
+  @if (sessionInputForm.controls.code.invalid && sessionInputForm.controls.code.touched) {
+    <p class="error">Code de session invalide</p>
+  }
+
+  <button type="submit" [disabled]="sessionInputForm.invalid">Rejoindre</button>
+</form>
